@@ -3,7 +3,7 @@ export function SiteFooter() {
     <footer className="relative w-full border-t border-white/10 bg-ink px-5 py-16 text-warm md:px-8">
       <div className="flex flex-col gap-12">
         <p className="font-serif text-[clamp(2.5rem,14vw,9rem)] leading-none tracking-tight">
-          FORM <span className="text-clay">/</span> FIRE
+          NOORE
         </p>
 
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
@@ -25,7 +25,7 @@ export function SiteFooter() {
 
         <div className="flex flex-col justify-between gap-4 border-t border-white/10 pt-6 text-xs text-clay md:flex-row">
           <span>Objects Made to Be Lit.</span>
-          <span>© {new Date().getFullYear()} FORM / FIRE. Made in small batches.</span>
+          <span>© {new Date().getFullYear()} NOORE. Made in small batches.</span>
         </div>
       </div>
     </footer>

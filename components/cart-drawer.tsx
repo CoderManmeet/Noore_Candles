@@ -1,12 +1,24 @@
 'use client'
 
 import { AnimatePresence, motion } from 'motion/react'
+import { useEffect, useRef } from 'react'
 import { Minus, Plus, X } from 'lucide-react'
 import { useCart } from '@/components/cart-provider'
 import { formatPrice } from '@/lib/products'
 
 export function CartDrawer() {
   const { isOpen, close, lines, subtotal, setQty, count } = useCart()
+  const closeButtonRef = useRef<HTMLButtonElement>(null)
+
+  useEffect(() => {
+    if (!isOpen) return
+    closeButtonRef.current?.focus()
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') close()
+    }
+    document.addEventListener('keydown', onKeyDown)
+    return () => document.removeEventListener('keydown', onKeyDown)
+  }, [close, isOpen])
 
   return (
     <AnimatePresence>
@@ -33,6 +45,7 @@ export function CartDrawer() {
             <header className="flex items-center justify-between px-6 py-6 border-b border-white/10">
               <h2 className="label text-stone">Your Bag {count > 0 && `(${count})`}</h2>
               <button
+                ref={closeButtonRef}
                 onClick={close}
                 aria-label="Close bag"
                 className="grid h-9 w-9 place-items-center rounded-full border border-white/15 text-warm transition-colors hover:bg-white/10"

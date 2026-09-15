@@ -39,9 +39,9 @@ export function SiteNav() {
           <Link
             href="/"
             className="font-serif text-lg tracking-tight text-warm md:text-xl"
-            aria-label="FORM / FIRE home"
+            aria-label="NOORE home"
           >
-            FORM <span className="text-clay">/</span> FIRE
+            NOORE
           </Link>
 
           <div className="flex items-center gap-4">
@@ -74,7 +74,7 @@ export function SiteNav() {
           >
             <div className="flex items-center justify-between px-5 py-5 md:px-8">
               <span className="font-serif text-lg tracking-tight text-warm md:text-xl">
-                FORM <span className="text-clay">/</span> FIRE
+                NOORE
               </span>
               <button
                 onClick={() => setOpen(false)}

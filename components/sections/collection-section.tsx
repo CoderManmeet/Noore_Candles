@@ -5,6 +5,7 @@ import { useRef } from 'react'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { products, formatPrice } from '@/lib/products'
+import { stops } from '@/lib/scroll'
 
 const N = products.length
 
@@ -21,7 +22,7 @@ function Panel({
   const span = 1 / (N - 1)
   const opacity = useTransform(
     progress,
-    [center - span * 0.55, center - span * 0.2, center + span * 0.2, center + span * 0.55],
+    stops(center - span * 0.55, center - span * 0.2, center + span * 0.2, center + span * 0.55),
     [0, 1, 1, 0],
   )
   const scale = useTransform(progress, [center - span, center, center + span], [0.9, 1, 0.9])

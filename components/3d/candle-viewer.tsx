@@ -1,7 +1,7 @@
 'use client'
 
 /**
- * CandleViewer — the interactive "object" at the heart of FORM / FIRE.
+ * CandleViewer — the interactive "object" at the heart of NOORE.
  *
  * This is a layered-image scene deliberately architected as a drop-in surface:
  * swap the <img> layer for a React Three Fiber <Canvas> / GLB later and the
@@ -9,6 +9,7 @@
  * contact shadow) stays identical.
  */
 
+import Image from 'next/image'
 import {
   motion,
   useMotionValue,
@@ -149,13 +150,15 @@ export function CandleViewer({
         animate={reduce ? undefined : { y: [0, -10, 0] }}
         transition={reduce ? undefined : { duration: 7, ease: 'easeInOut', repeat: Infinity }}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <Image
           src={image || '/placeholder.svg'}
           alt={alt}
+          width={900}
+          height={1100}
+          priority={priority}
+          sizes="(max-width: 768px) 76vw, 440px"
           draggable={false}
-          loading={priority ? 'eager' : 'lazy'}
-          className="pointer-events-none w-full h-auto object-contain drop-shadow-[0_40px_60px_rgba(0,0,0,0.55)]"
+          className="pointer-events-none h-auto w-full object-contain drop-shadow-[0_40px_60px_rgba(0,0,0,0.55)]"
         />
 
         {/* Specular highlight that tracks the tilt */}

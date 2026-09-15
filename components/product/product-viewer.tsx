@@ -1,7 +1,7 @@
 'use client'
 
 import { AnimatePresence, motion } from 'motion/react'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Maximize2, X } from 'lucide-react'
 import { CandleViewer } from '@/components/3d/candle-viewer'
 import { cn } from '@/lib/utils'
@@ -11,6 +11,17 @@ export function ProductViewer({ product }: { product: Product }) {
   const gallery = product.gallery.length ? product.gallery : [product.image]
   const [current, setCurrent] = useState(gallery[0])
   const [full, setFull] = useState(false)
+  const closeButtonRef = useRef<HTMLButtonElement>(null)
+
+  useEffect(() => {
+    if (!full) return
+    closeButtonRef.current?.focus()
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setFull(false)
+    }
+    document.addEventListener('keydown', onKeyDown)
+    return () => document.removeEventListener('keydown', onKeyDown)
+  }, [full])
 
   return (
     <div
@@ -65,6 +76,7 @@ export function ProductViewer({ product }: { product: Product }) {
             onClick={() => setFull(false)}
           >
             <button
+              ref={closeButtonRef}
               onClick={() => setFull(false)}
               aria-label="Close fullscreen"
               className="absolute right-5 top-5 z-10 grid h-11 w-11 place-items-center rounded-full border border-warm/20 text-warm md:right-8 md:top-8"

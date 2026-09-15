@@ -21,12 +21,13 @@ const archivo = Archivo({
 })
 
 export const metadata: Metadata = {
-  title: 'FORM / FIRE — Objects Made to Be Lit',
+  metadataBase: new URL('https://noore.candles'),
+  title: 'NOORE — Objects Made to Be Lit',
   description:
-    'FORM / FIRE creates sculptural, handmade candle objects. Small batch, slow process, no two pieces exactly alike. An object designed to change a room before it is ever lit.',
+    'NOORE creates sculptural, handmade candle objects. Small batch, slow process, no two pieces exactly alike. An object designed to change a room before it is ever lit.',
   generator: 'v0.app',
   openGraph: {
-    title: 'FORM / FIRE — Objects Made to Be Lit',
+    title: 'NOORE — Objects Made to Be Lit',
     description:
       'Sculptural, handmade candle objects. A digital gallery of collectible design pieces made to be lit.',
     type: 'website',

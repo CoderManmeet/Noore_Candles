@@ -33,7 +33,7 @@ function Stage({
 
   const opacity = useTransform(
     progress,
-    [start - 0.06, mid - 0.04, mid + 0.04, end - 0.02],
+    stops(start - 0.06, mid - 0.04, mid + 0.04, end - 0.02),
     [0, 1, 1, 0],
   )
   const scale = useTransform(progress, [start, end], [1.12, 0.94])

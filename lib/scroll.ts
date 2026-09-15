@@ -7,10 +7,13 @@
  */
 export function stops(...values: number[]): number[] {
   const out: number[] = []
+  const epsilon = 0.0001
   for (let i = 0; i < values.length; i++) {
-    let v = Math.min(1, Math.max(0, values[i]))
-    if (i > 0 && v < out[i - 1]) v = out[i - 1]
+    const remaining = values.length - i - 1
+    const max = 1 - remaining * epsilon
+    let v = Math.min(max, Math.max(0, values[i]))
+    if (i > 0 && v <= out[i - 1]) v = Math.min(max, out[i - 1] + epsilon)
     out.push(v)
   }
   return out
-}
+} 
