@@ -1,0 +1,130 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-ink: #0a0a09;
+  --color-ink-soft: #141310;
+  --color-warm: #f3efe7;
+  --color-stone: #d8d0c2;
+  --color-clay: #a98f78;
+  --color-ember: #e0956a;
+
+  --font-serif: var(--font-fraunces), Georgia, 'Times New Roman', serif;
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+
+  --color-background: var(--color-ink);
+  --color-foreground: var(--color-warm);
+}
+
+:root {
+  color-scheme: dark;
+  --background: #0a0a09;
+  --foreground: #f3efe7;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--color-ink);
+    color: var(--color-warm);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: var(--color-ember);
+    color: var(--color-ink);
+  }
+
+  /* Editorial serif defaults */
+  .font-serif {
+    font-optical-sizing: auto;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Fine tracked label used across sections */
+  .label {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    font-size: 0.6875rem;
+  }
+
+  .grain {
+    position: relative;
+  }
+  .grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.04;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+@keyframes flame-flicker {
+  0%,
+  100% {
+    transform: translateX(-50%) scale(1) rotate(-1deg);
+    opacity: 0.95;
+  }
+  25% {
+    transform: translateX(-50%) scale(1.04, 0.98) rotate(1deg);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(-50%) scale(0.97, 1.05) rotate(-1.5deg);
+    opacity: 0.9;
+  }
+  75% {
+    transform: translateX(-50%) scale(1.02, 1.01) rotate(0.5deg);
+    opacity: 1;
+  }
+}
+
+@keyframes swipe-hint {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(14px);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
