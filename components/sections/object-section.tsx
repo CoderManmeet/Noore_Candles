@@ -16,7 +16,7 @@ export function ObjectSection() {
     <section
       ref={ref}
       id="object"
-      className="relative z-10 -mt-[15vh] min-h-[190vh] w-full overflow-hidden bg-ink px-5 pt-[25vh] pb-[24vh] md:mt-0 md:px-8 md:py-[24vh]"
+      className="relative z-10 mt-0 min-h-[190vh] w-full overflow-hidden bg-ink px-5 pt-[8vh] pb-[24vh] md:mt-0 md:px-8 md:py-[24vh]"
       aria-label="The Object"
     >
       {/* Architectural headline */}
@@ -34,7 +34,7 @@ export function ObjectSection() {
       {/* Overlapping editorial imagery at differing speeds */}
       <motion.figure
         style={{ y: textureY }}
-        className="pointer-events-none absolute right-[6vw] top-[6vh] z-10 w-[46vw] max-w-[340px] overflow-hidden rounded-sm md:right-[10vw]"
+        className="pointer-events-none absolute right-[6vw] top-[2vh] z-10 w-[42vw] max-w-[300px] overflow-hidden rounded-sm md:right-[10vw] md:top-[6vh] md:w-[46vw] md:max-w-[340px]"
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/editorial/texture.png" alt="Macro detail of handmade candle wax texture" className="h-full w-full object-cover" />
@@ -42,7 +42,7 @@ export function ObjectSection() {
 
       <motion.figure
         style={{ y: wickY }}
-        className="pointer-events-none absolute left-[4vw] top-[52vh] z-30 w-[52vw] max-w-[380px] overflow-hidden rounded-sm shadow-2xl"
+        className="pointer-events-none absolute left-[4vw] top-[36vh] z-30 w-[50vw] max-w-[330px] overflow-hidden rounded-sm shadow-2xl md:top-[52vh] md:w-[52vw] md:max-w-[380px]"
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/editorial/wick.png" alt="Close-up of an unlit cotton wick emerging from ivory wax" className="h-full w-full object-cover" />
@@ -63,7 +63,7 @@ export function ObjectSection() {
         </p>
       </div>
 
-      <span className="absolute left-5 top-[10vh] z-30 hidden label text-clay/60 sm:block md:left-8">02 — The Object</span>
+      <span className="absolute left-5 top-[4vh] z-30 hidden label text-clay/60 sm:block md:left-8 md:top-[10vh]">02 — The Object</span>
     </section>
   )
 }
