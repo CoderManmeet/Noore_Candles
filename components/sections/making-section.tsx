@@ -76,7 +76,7 @@ export function MakingSection() {
       className="relative h-[420vh] w-full bg-ink"
       aria-label="The Making"
     >
-      <div className="sticky top-0 h-screen w-full overflow-hidden grain">
+      <div className="sticky top-0 h-[100svh] w-full overflow-hidden grain">
         <div className="absolute left-5 top-[14vh] z-30 md:left-8">
           <span className="label text-clay/60">03 — The Making</span>
           <h2 className="mt-4 font-serif text-[clamp(3rem,16vw,10rem)] leading-[0.85] tracking-tight text-warm">

@@ -84,7 +84,7 @@ export function CollectionSection() {
 
   return (
     <section ref={ref} id="collection" className="relative w-full" style={{ height: `${N * 100}vh` }} aria-label="The Collection digital gallery">
-      <motion.div style={{ backgroundColor: bg }} className="sticky top-0 h-screen w-full overflow-hidden grain">
+      <motion.div style={{ backgroundColor: bg }} className="sticky top-0 h-[100svh] w-full overflow-hidden grain">
         <div className="absolute left-5 top-[13vh] z-30 md:left-8">
           <span className="label text-warm/50">04 — The Collection</span>
           <h2 className="mt-3 font-serif text-3xl text-warm md:text-4xl">Walk the rooms</h2>
