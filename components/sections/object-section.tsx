@@ -16,13 +16,13 @@ export function ObjectSection() {
     <section
       ref={ref}
       id="object"
-      className="relative min-h-[190vh] w-full overflow-hidden bg-ink px-5 py-[24vh] md:px-8"
+      className="relative z-10 -mt-[15vh] min-h-[190vh] w-full overflow-hidden bg-ink px-5 pt-[25vh] pb-[24vh] md:mt-0 md:px-8 md:py-[24vh]"
       aria-label="The Object"
     >
       {/* Architectural headline */}
       <motion.h2
         style={{ y: headlineY }}
-        className="relative z-20 font-serif text-warm leading-[0.86] tracking-tight text-[clamp(3.5rem,22vw,15rem)]"
+        className="relative z-20 max-w-[6ch] font-serif text-warm leading-[0.82] tracking-[-0.055em] text-[clamp(4.25rem,23vw,15rem)] md:max-w-none md:tracking-tight"
       >
         <span className="block">Not</span>
         <span className="block pl-[8vw]">Just</span>
@@ -63,7 +63,7 @@ export function ObjectSection() {
         </p>
       </div>
 
-      <span className="absolute left-5 top-[10vh] z-30 label text-clay/60 md:left-8">02 — The Object</span>
+      <span className="absolute left-5 top-[10vh] z-30 hidden label text-clay/60 sm:block md:left-8">02 — The Object</span>
     </section>
   )
 }

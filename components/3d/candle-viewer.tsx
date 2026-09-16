@@ -158,7 +158,7 @@ export function CandleViewer({
           priority={priority}
           sizes="(max-width: 768px) 76vw, 440px"
           draggable={false}
-          className="pointer-events-none h-auto w-full object-contain drop-shadow-[0_40px_60px_rgba(0,0,0,0.55)]"
+          className="pointer-events-none h-auto w-full object-contain drop-shadow-[0_52px_72px_rgba(0,0,0,0.72)]"
         />
 
         {/* Specular highlight that tracks the tilt */}
@@ -196,7 +196,7 @@ export function CandleViewer({
       {interactive && (
         <span
           className={cn(
-            'pointer-events-none absolute bottom-1 left-1/2 -translate-x-1/2 label text-clay transition-opacity duration-500',
+            'pointer-events-none absolute bottom-1 left-1/2 hidden -translate-x-1/2 label text-clay transition-opacity duration-500 sm:block',
             active ? 'opacity-0' : 'opacity-60',
           )}
         >

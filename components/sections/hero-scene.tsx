@@ -19,7 +19,7 @@ export function HeroScene() {
   return (
     <section
       ref={ref}
-      className="relative h-screen w-full overflow-hidden bg-ink grain"
+      className="relative h-[115svh] min-h-[680px] w-full overflow-hidden bg-ink grain md:h-screen"
       aria-label="Intro"
     >
       {/* Warm floor pool */}
@@ -34,20 +34,20 @@ export function HeroScene() {
 
       <motion.p
         style={{ opacity: uiOpacity }}
-        className="absolute inset-x-0 top-[15vh] z-10 text-center label text-clay"
+        className="absolute inset-x-0 top-[12vh] z-10 hidden text-center label text-clay/70 sm:block"
       >
         Handmade Candle Objects
       </motion.p>
 
       <motion.div
         style={{ y: candleY, scale: candleScale, opacity: candleOpacity }}
-        className="absolute inset-0 flex items-center justify-center"
+        className="absolute inset-x-0 top-[4vh] bottom-[7vh] flex items-center justify-center md:inset-0"
       >
         <CandleViewer
           image="/candles/sol-hero.png"
           alt="SOL — a tall sculptural candle resembling a distorted sun, in warm ivory wax"
           priority
-          sizeClassName="w-[80vw] max-w-[420px]"
+          sizeClassName="w-[108vw] max-w-[560px] md:w-[80vw] md:max-w-[420px]"
         />
       </motion.div>
 
