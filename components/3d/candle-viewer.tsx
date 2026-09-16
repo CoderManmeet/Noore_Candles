@@ -3,10 +3,9 @@
 /**
  * CandleViewer — the interactive "object" at the heart of NOORE.
  *
- * This is a layered-image scene deliberately architected as a drop-in surface:
- * swap the <img> layer for a React Three Fiber <Canvas> / GLB later and the
- * surrounding interaction (drag inertia, device tilt, dynamic lighting, glow,
- * contact shadow) stays identical.
+ * The viewer owns interaction and lighting; CandleModel owns the collectible
+ * object treatment. Keeping those layers separate makes new sculptural forms
+ * swappable without rewriting the scene.
  */
 
 import Image from 'next/image'
@@ -20,14 +19,51 @@ import {
 import { useEffect, useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
 
-type CandleViewerProps = {
+type CandleShape = 'sol' | 'melt' | 'default'
+
+type CandleModelProps = {
   image: string
   alt: string
-  /** Warm glow intensity 0–1 (used by the "light it" interaction) */
+  shape?: CandleShape
+  priority?: boolean
   glow?: number
+}
+
+/**
+ * A swappable collectible-object layer. The source image supplies the authored
+ * silhouette while these restrained material layers add wax depth, handmade
+ * variation, and a studio-lit finish consistently across every shape.
+ */
+function CandleModel({ image, alt, shape = 'default', priority = false, glow = 0 }: CandleModelProps) {
+  const shapeClass = shape === 'sol' ? 'candle-model--sol' : shape === 'melt' ? 'candle-model--melt' : ''
+
+  return (
+    <div className={cn('candle-model relative isolate', shapeClass)}>
+      <div aria-hidden className="candle-model__ground" />
+      <Image
+        src={image || '/placeholder.svg'}
+        alt={alt}
+        width={900}
+        height={1100}
+        priority={priority}
+        sizes="(max-width: 768px) 76vw, 440px"
+        draggable={false}
+        className="candle-model__image pointer-events-none h-auto w-full object-contain"
+      />
+      <div aria-hidden className="candle-model__wax" />
+      <div aria-hidden className="candle-model__highlight" />
+      <div
+        aria-hidden
+        className="candle-model__warmth"
+        style={{ opacity: 0.18 + glow * 0.48 }}
+      />
+    </div>
+  )
+}
+
+type CandleViewerProps = CandleModelProps & {
   /** Enable drag-to-inspect + device tilt */
   interactive?: boolean
-  priority?: boolean
   className?: string
   sizeClassName?: string
 }
@@ -38,6 +74,7 @@ const MAX_X = 14 // vertical drag → rotateX
 export function CandleViewer({
   image,
   alt,
+  shape = 'default',
   glow = 0,
   interactive = true,
   priority = false,
@@ -150,15 +187,12 @@ export function CandleViewer({
         animate={reduce ? undefined : { y: [0, -10, 0] }}
         transition={reduce ? undefined : { duration: 7, ease: 'easeInOut', repeat: Infinity }}
       >
-        <Image
-          src={image || '/placeholder.svg'}
+        <CandleModel
+          image={image}
           alt={alt}
-          width={900}
-          height={1100}
+          shape={shape}
           priority={priority}
-          sizes="(max-width: 768px) 76vw, 440px"
-          draggable={false}
-          className="pointer-events-none h-auto w-full object-contain drop-shadow-[0_52px_72px_rgba(0,0,0,0.72)]"
+          glow={glow}
         />
 
         {/* Specular highlight that tracks the tilt */}
