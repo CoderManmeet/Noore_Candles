@@ -28,12 +28,16 @@ export function StudioSection() {
       </h2>
 
       <motion.figure
-        style={{ y: a }}
-        className="absolute right-[6vw] top-[8vh] w-[40vw] max-w-[260px] overflow-hidden rounded-sm"
-      >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/editorial/studio-hands.png" alt="A maker's hands finishing a candle in the studio" className="h-full w-full object-cover" />
-      </motion.figure>
+  style={{ y: a }}
+  className="relative mt-[8vh] w-full max-w-[380px] overflow-hidden rounded-sm md:mx-auto md:w-[50vw] md:max-w-[620px]"
+>
+  {/* eslint-disable-next-line @next/next/no-img-element */}
+  <img
+    src="/editorial/studio-hands.png"
+    alt="A maker's hands finishing a candle in the studio"
+    className="aspect-[4/5] h-full w-full object-cover md:aspect-[16/10]"
+  />
+</motion.figure>
 
       <div className="relative mt-[14vh] grid grid-cols-12 gap-4">
         <motion.figure
