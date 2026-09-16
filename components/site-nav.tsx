@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from 'motion/react'
 import { useState } from 'react'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { useCart } from '@/components/cart-provider'
 import { useSmoothScroll } from '@/components/smooth-scroll'
@@ -21,14 +21,12 @@ export function SiteNav() {
   const { count, open: openCart } = useCart()
   const { scrollTo } = useSmoothScroll()
   const pathname = usePathname()
-  const router = useRouter()
-
   const go = (target: string) => {
     setOpen(false)
     if (pathname === '/') {
       setTimeout(() => scrollTo(target), 60)
     } else {
-      router.push(`/${target}`)
+      window.location.assign(`/${target}`)
     }
   }
 
